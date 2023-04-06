@@ -2,9 +2,10 @@
 define('SITEPATH', '/wp-content/themes/daesys/');
 
 //Create New Page
-$newpage = "ano" . date('Y');
+$ano = date('Y');
+$newpage = "ano" . $ano;
 if (!get_page_by_title($newpage)) {
-    //create new page
+    //create new page    
     $add_new_page = array(
         'post_title'    => $newpage,
         'post_content'  => '',
@@ -13,6 +14,16 @@ if (!get_page_by_title($newpage)) {
         'post_type'     => 'page'
     );
     wp_insert_post($add_new_page);
+
+    //insert new year
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'clientes_ativos';
+    $sql1 = "INSERT INTO $table_name ($ano,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);";
+    $wpdb->query($sql1);
+    $table_name2 = $wpdb->prefix . 'clientes_cat';
+    $sql2 = "INSERT INTO $table_name2 ($ano,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);";
+    $wpdb->query($sql2);
+    
 }
 
 
