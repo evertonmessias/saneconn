@@ -1,9 +1,3 @@
-/**
-* Template Name: NiceAdmin - v2.5.0
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 (function() {
   "use strict";
 
@@ -85,6 +79,10 @@
   if(pageurl[3] == 'clientes'){
     document.querySelector("#charts-nav-assessor").classList.add('show');
     document.querySelector("#charts-nav-assessor ."+pageurl[3]).classList.add('active');
+  }
+  if(pageurl[3] == 'operacionais' || pageurl[3] == 'rh'){
+    document.querySelector("#charts-nav-indicadores").classList.add('show');
+    document.querySelector("#charts-nav-indicadores ."+pageurl[3]).classList.add('active');
   }
 
   /**

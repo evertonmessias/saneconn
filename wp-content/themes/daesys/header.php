@@ -144,6 +144,26 @@
             </li>
 
 
+            <!-- INDICADORES Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#charts-nav-indicadores" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-bar-chart-steps"></i><span>INDICADORES</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="charts-nav-indicadores" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a onclick="loadPage()" class="operacionais" href="/operacionais">
+                            <i class="bi bi-circle"></i><span>Operacionais</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a onclick="loadPage()" class="rh" href="/rh">
+                            <i class="bi bi-circle"></i><span>RH</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End INDICADORES Nav -->
+
+
             <!-- CEBI Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#charts-nav-cebi" data-bs-toggle="collapse" href="#">
@@ -171,7 +191,7 @@
             <!-- ASSESSOR Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#charts-nav-assessor" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-grid"></i><span>ASSESSOR - DAE AME</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-graph-up"></i><span>ASSESSOR - DAE AME</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="charts-nav-assessor" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
