@@ -1,5 +1,7 @@
 <?php
 
+echo "TESTE";
+/*
 $datai = '01.01.2023';
 $dataf = '31.12.2023';
 
@@ -34,7 +36,7 @@ for($i=0;$i<count($array_categorias);$i++){
 }
 
 echo implode(',',$array_valores);
-
+*/
 
 
 /*
