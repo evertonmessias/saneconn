@@ -69,6 +69,43 @@ if (isset($_POST['intervalo']) && $_POST['intervalo'] == 'ano') {
         $wpdb->query($sql3);
     }
 
+    $dataii = '01.01.'.$ano;
+    $dataff = '31.12.'.$ano;
+    
+    $sql4 = "EXECUTE PROCEDURE PR_LISTA_LIGACOES('$dataii','$dataff');";
+    
+    $conn = DAE::firebird();
+    
+    $conn->exec($sql4);
+    
+    $sql5 = "SELECT CATEGGORIA_ECONOMIA, COUNT(CATEGGORIA_ECONOMIA) FROM LIGACOES WHERE LIG_L_EST LIKE 'T' GROUP BY CATEGGORIA_ECONOMIA ORDER BY CATEGGORIA_ECONOMIA ASC;";
+    
+    $list_cat = $conn->query($sql5)->fetchAll(PDO::FETCH_ASSOC);
+    
+    $array_cat = [];
+    $array_val = [];
+    
+    
+    foreach($list_cat as $key => $val){
+        $array_cat[] = substr($val['CATEGGORIA_ECONOMIA'],0,3);
+        $array_val[] = $val['COUNT'];
+    }
+    
+    $array_categorias = ['CAM','COM','CON','ENT','HOC','HOP','IND','ITR','PES','PMU','PNM','POC','RES','SOC','TAR','TER'];
+    $array_valores = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    
+    for($i=0;$i<count($array_categorias);$i++){
+        for($x=0;$x<count($array_cat);$x++){
+            if($array_categorias[$i] == $array_cat[$x]){
+                $array_valores[$i] = $array_val[$x];
+            }     
+        }
+    }
+
+    $table_name2 = $wpdb->prefix . 'clientes_cat';
+    $sql6 = "UPDATE $table_name2 SET `CAM` = $array_valores[0],`COM` = $array_valores[1],`CON` = $array_valores[2],`ENT` = $array_valores[3],`HOC` = $array_valores[4],`HOP` = $array_valores[5],`IND` = $array_valores[6],`ITR` = $array_valores[7],`PES` = $array_valores[8],`PMU` = $array_valores[9],`PNM` = $array_valores[10],`POC` = $array_valores[11],`RES` = $array_valores[12],`SOC` = $array_valores[13],`TAR` = $array_valores[14],`TER` = $array_valores[15] WHERE `ano` = $ano;";
+    $wpdb->query($sql6);
+
     echo "OK";
 
 } else {

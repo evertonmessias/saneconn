@@ -22,22 +22,18 @@ foreach($list_cat as $key => $val){
     $array_val[] = $val['COUNT'];
 }
 
-//print_r($array_cat);
-//print_r($array_val);
-
 $array_categorias = ['CAM','COM','CON','ENT','HOC','HOP','IND','ITR','PES','PMU','PNM','POC','RES','SOC','TAR','TER'];
+$array_valores = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 for($i=0;$i<count($array_categorias);$i++){
-    
-    for($i=0;$i<count($array_categorias);$i++){
-
-
-        
+    for($x=0;$x<count($array_cat);$x++){
+        if($array_categorias[$i] == $array_cat[$x]){
+            $array_valores[$i] = $array_val[$x];
+        }     
     }
-
-
 }
 
+echo implode(',',$array_valores);
 
 
 
