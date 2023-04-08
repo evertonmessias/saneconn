@@ -46,6 +46,20 @@ class DAE
         return rtrim($content1,',');
     }
 
+    public static function oracle2table($sql){
+        preg_match_all('/<tr>(.*?)<\/tr>/s', utf8_encode(self::oracle($sql)), $content);
+        $results_table = $content[0];
+        $thead = array_shift($results_table);
+        $tbody = "";
+        foreach ($results_table as $rt) {
+            if ($rt != $thead) {
+                $tbody .= $rt;
+            }
+        }
+        $strings_table = "<table><thead>" . $thead . "</thead><tbody>" . $tbody . "</tbody></table>";
+        return $strings_table;        
+    }
+
     public static function firebird(){
         try {
             return new PDO(fbfdsn, fbuser, fbpass);
