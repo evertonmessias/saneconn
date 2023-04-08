@@ -1356,5 +1356,7 @@ aside .aside-img .logo4{
     margin: 0 auto;
     width: 100px;
   }
-
+}
+#team th,#team td{
+  text-align: left;
 }
