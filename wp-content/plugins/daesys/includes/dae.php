@@ -56,7 +56,7 @@ class DAE
                 $tbody .= $rt;
             }
         }
-        $strings_table = "<table><thead>" . $thead . "</thead><tbody>" . $tbody . "</tbody></table>";
+        $strings_table = "<thead>" . $thead . "</thead><tbody>" . $tbody . "</tbody>";
         return $strings_table;        
     }
 

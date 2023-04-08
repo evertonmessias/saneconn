@@ -1,29 +1,24 @@
 <?php
 
 // ***************** Add style & script for Admin
-function style_and_script()
-{
-?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel='stylesheet' href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+add_action('admin_enqueue_scripts',function(){
+	wp_enqueue_style('style1', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css');
+	wp_enqueue_style('style2', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');
+	wp_enqueue_style('style3', 'https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
+	wp_enqueue_style('style4', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css');
+	wp_enqueue_style('style5', 'https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css');
+	wp_enqueue_style('style6', '/wp-content/themes/daesys/assets/vendor/remixicon/remixicon.css');
+	wp_enqueue_style('style7', '/wp-content/plugins/daesys/assets/daesys.css');
 
-	<link href="<?php echo SITEPATH; ?>assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-
-<?php
-	wp_enqueue_style('stilos', '/wp-content/plugins/daesys/assets/daesys.css');
-	wp_enqueue_script('scripts', '/wp-content/plugins/daesys/assets/daesys.js');
-}
-add_action('admin_enqueue_scripts', 'style_and_script');
+	wp_enqueue_script('script1', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js');
+	wp_enqueue_script('script2', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js');
+	wp_enqueue_script('script3', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js');
+	wp_enqueue_script('script4', 'https://code.jquery.com/jquery-3.5.1.js');
+	wp_enqueue_script('script5', 'https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js');
+	wp_enqueue_script('script6', 'https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js');
+	wp_enqueue_script('script7', '/wp-content/plugins/daesys/assets/daesys.js');
+});
 
 
 //***************** Add General Configuration Roles

@@ -12,7 +12,7 @@ if (!is_user_logged_in()) {
 ?>
 
 <script>
-//******************* */
+  //******************* */
 </script>
 
 <main id="main" class="main">
@@ -28,13 +28,18 @@ if (!is_user_logged_in()) {
   </div><!-- End Page Title -->
 
   <section class="section dashboard">
+
     <div class="row">
       <div class="col-12">
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque enim enim, tincidunt quis eros nec, gravida consectetur orci. Vivamus at tortor sit amet metus ultricies tempor at in dolor. Nulla at accumsan sapien. Sed ut varius augue, ut facilisis magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean et maximus arcu. Fusce tincidunt est sed dolor fermentum tristique. Etiam ut magna a nisi malesuada dignissim.
-        </p>
+        <table id="team" class="table table-striped" style="width:100%">
+          <?php
+          $sql = "SELECT CODSEQ,NOMEFUNCIONARIO FROM FUNCIONARIO WHERE INATIVO = 0 ORDER BY 1 ASC;";
+          echo DAE::oracle2table($sql);
+          ?>
+        </table>
       </div>
     </div>
+    
   </section>
 
 </main><!-- End #main -->

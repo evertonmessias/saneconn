@@ -327,4 +327,9 @@
     }, 200);
   }
 
+  $('#team').DataTable( {
+    "ordering": false,
+    pageLength : 25,
+  } );
+
 })();

@@ -25,7 +25,7 @@
     <link href="<?php echo SITEPATH; ?>assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="<?php echo SITEPATH; ?>assets/vendor/simple-datatables/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="<?php echo SITEPATH; ?>assets/css/style.css" rel="stylesheet">
