@@ -55,9 +55,8 @@ class DAE
             if ($rt != $thead) {
                 $tbody .= $rt;
             }
-        }
-        $strings_table = "<tbody>" . $tbody . "</tbody>";
-        return $strings_table;        
+        }        
+        return $tbody;        
     }
 
     public static function oracleTest($sql){
