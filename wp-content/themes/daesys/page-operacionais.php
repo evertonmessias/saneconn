@@ -21,7 +21,7 @@ if (!is_user_logged_in()) {
     <h1>Indicadores <strong>Operacionais</strong></h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">home</a></li>
+        <li class="breadcrumb-item"><a href="/">home</a></li>
         <li class="breadcrumb-item active">operacional</li>
       </ol>
     </nav>

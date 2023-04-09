@@ -340,7 +340,7 @@ if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name) {
             <h1>CEBI - DAE AME <strong><?php echo $ano; ?></strong></h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">home</a></li>
+                    <li class="breadcrumb-item"><a href="/">home</a></li>
                     <li class="breadcrumb-item active">dashboard <?php echo $ano; ?></li>
                 </ol>
             </nav>

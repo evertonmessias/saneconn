@@ -170,7 +170,7 @@ $sum_ano_pagamentosF = number_format($sum_ano_pagamentos, 2, ',', '.');
     <h1>CEBI - DAE AME <strong>(comparativo)</strong></h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">home</a></li>
+        <li class="breadcrumb-item"><a href="/">home</a></li>
         <li class="breadcrumb-item active">todos</li>
       </ol>
     </nav>

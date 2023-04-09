@@ -328,7 +328,7 @@
   }
 
   $('#team').DataTable( {
-    "ordering": false,
+    order: [[1, 'asc']],
     pageLength : 25,
   } );
 

@@ -56,8 +56,21 @@ class DAE
                 $tbody .= $rt;
             }
         }
-        //$strings_table = "<thead>" . $thead . "</thead><tbody>" . $tbody . "</tbody>";
         $strings_table = "<tbody>" . $tbody . "</tbody>";
+        return $strings_table;        
+    }
+
+    public static function oracleTest($sql){
+        preg_match_all('/<tr>(.*?)<\/tr>/s', utf8_encode(self::oracle($sql)), $content);
+        $results_table = $content[0];
+        $thead = array_shift($results_table);
+        $tbody = "";
+        foreach ($results_table as $rt) {
+            if ($rt != $thead) {
+                $tbody .= $rt;
+            }
+        }
+        $strings_table = "<table><thead>" . $thead . "</thead><tbody>" . $tbody . "</tbody></table>";
         return $strings_table;        
     }
 
