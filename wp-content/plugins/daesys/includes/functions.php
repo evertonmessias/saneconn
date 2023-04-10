@@ -18,6 +18,8 @@ add_action('admin_enqueue_scripts',function(){
 	wp_enqueue_script('script5', 'https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js');
 	wp_enqueue_script('script6', 'https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js');
 	wp_enqueue_script('script7', '/wp-content/plugins/daesys/assets/daesys.js');
+
+	wp_enqueue_media();
 });
 
 
@@ -38,41 +40,12 @@ function general_configuration_role_caps()
 add_action('admin_init', 'general_configuration_role_caps', 999);
 
 
-//***************** Add Remove menu page Admin
-function wpdocs_remove_menus()
-{
-	if (current_user_can('editor')) {
-		remove_menu_page('index.php'); //Dashboard		
-		remove_menu_page('themes.php'); //Appearance
-		remove_menu_page('edit-comments.php');
-		remove_menu_page('plugins.php'); //Plugins
-		remove_menu_page('users.php'); //Users
-		remove_menu_page('tools.php'); //Tools
-		remove_menu_page('profile.php'); //Profile
-		remove_menu_page('options-general.php'); //Settings
-		remove_menu_page('edit.php?post_type=page'); // Pages
-	}
-}
-add_action('admin_menu', 'wpdocs_remove_menus');
-
-
-//Rename menu iten Admin
-function wd_admin_menu_rename()
-{
-	global $menu;
-	//$menu[5][0] = 'Posts?';
-}
-add_action('admin_menu', 'wd_admin_menu_rename');
-
-
 // ***************** Add in Menu
-function menu_daesys()
-{
+add_action('admin_menu',function(){
 	add_menu_page('DAESys', 'DAESys', 'edit_posts', 'daesys', 'function_about', 'dashicons-welcome-view-site', 1);
 	//add_submenu_page('daesys', 'Acessos', 'Acessos', 'edit_posts', 'acess', 'function_access', 1);
 	add_submenu_page('daesys', 'Login', 'Login', 'edit_posts', 'login', 'function_login', 2);
-}
-add_action('admin_menu', 'menu_daesys');
+});
 
 // ***************** Add About
 function function_about()
@@ -95,16 +68,22 @@ function function_login()
 }
 add_action('function_login', 'function_login');
 
-// ***************** Add Media
-function load_media_files()
-{
-	wp_enqueue_media();
-}
-add_action('admin_enqueue_scripts', 'load_media_files');
 
 //************* Add thumbnails
 add_theme_support('post-thumbnails', array('post'));
 
+
+//************* Hide admin bar for users
+add_action('after_setup_theme',function(){
+	show_admin_bar(false);
+});
+
+
+//************* Remove tags support from posts
+add_action('init',function(){
+	unregister_taxonomy_for_object_type('post_tag', 'post');
+	register_nav_menu('daesys-nav', __('daesys-nav'));
+});
 
 //************* Data Base
 /*
@@ -154,27 +133,3 @@ function list_data($sql) // list data base
 	return $results;
 }
 add_action('list_data', 'list_data');
-
-
-//************* Hide admin bar for users
-function remove_admin_bar()
-{
-	show_admin_bar(false);
-}
-add_action('after_setup_theme', 'remove_admin_bar');
-
-
-//************* Remove tags support from posts
-function myprefix_unregister_tags()
-{
-	unregister_taxonomy_for_object_type('post_tag', 'post');
-}
-add_action('init', 'myprefix_unregister_tags');
-
-
-//************* Add Menu
-function register_my_menu()
-{
-	register_nav_menu('daesys-nav', __('daesys NAV'));
-}
-add_action('init', 'register_my_menu');

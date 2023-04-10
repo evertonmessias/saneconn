@@ -16,18 +16,19 @@ if (!defined('ABSPATH')) {
 }
 
 // ***************** Add DB
-function add_db_access()
-{
+register_activation_hook(__FILE__, function() {
+
     global $wpdb;
     $charset_collate = $wpdb->get_charset_collate();
-    $table_name = $wpdb->prefix . 'access';
-
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-    /*$sql = "CREATE TABLE $table_name (`id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,`ipadress` text NOT NULL,`time` datetime DEFAULT '0000-00-00 00:00:00' NOT NULL)$charset_collate;";
+    /*
+    $table_name = $wpdb->prefix . 'access';
+    $sql = "CREATE TABLE $table_name (`id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,`ipadress` text NOT NULL,`time` datetime DEFAULT '0000-00-00 00:00:00' NOT NULL)$charset_collate;";
     if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
         dbDelta($sql);
-    }*/
+    }
+    */
 
     $table_name2 = $wpdb->prefix . 'login';
     $sql2 = "CREATE TABLE $table_name2 (`id` int PRIMARY KEY NOT NULL AUTO_INCREMENT, `user` text NOT NULL,`ipadress` text NOT NULL,`time` datetime DEFAULT '0000-00-00 00:00:00' NOT NULL)$charset_collate;";
@@ -63,16 +64,13 @@ function add_db_access()
     remove_role('author');
     flush_rewrite_rules();
     
-}
-register_activation_hook(__FILE__, 'add_db_access');
+});
 
 
 // DEACTIVATE *************************************************
-function deactivate()
-{
+register_deactivation_hook(__FILE__, function(){
     flush_rewrite_rules();
-}
-register_deactivation_hook(__FILE__, 'deactivate');
+});
 
 
 // FUNCTIONS ************************************************
