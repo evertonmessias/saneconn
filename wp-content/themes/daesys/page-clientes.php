@@ -318,7 +318,7 @@ foreach ($list_cat[2] as $key => $val) {
         <div class="card info-card revenue-card">
 
           <div class="card-body">
-            <h5 class="card-title">Clientes Novos no Ano <span>(de <?php echo date('Y'); ?>)</span></h5>
+            <h5 class="card-title">Relação de Ligações de Água por Período <span>(Ano <?php echo date('Y'); ?>)</span></h5>
 
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
